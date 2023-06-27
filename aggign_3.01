@@ -1,0 +1,385 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ab8e36f5-0c29-4bb3-a120-71f9301a57de",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Q1-which keyword is used to create a function? create a fun to return a list of odd number in the rangeof 1 to 25\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e66de75e-2898-49bc-99b9-321a09025ed6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "## DEF IS IS THE KEYWORD WHICH USED TO CREATE A FUNCTION.\n",
+    "def get_odd_number():\n",
+    "    odd_number = []\n",
+    "    for num in range(1,26):\n",
+    "        if num % 2 != 0:\n",
+    "            odd_number.append(num)\n",
+    "    return odd_number\n",
+    "result = get_odd_number()\n",
+    "print(result)\n",
+    "\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0f54357b-1c40-4f7b-90d0-81deb7f92d86",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Q2- why *args and **kwargs is used in some function?create a function each for  *args and **kwargs to demonstsrate their uses.\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7128d37b-de73-4867-b75c-4aa44857cd05",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "##he *args and **kwargs are special syntax used in Python function definitions to allow a variable number of arguments to be passed to the function.\n",
+    "def greet(*args):\n",
+    "    for name in args:\n",
+    "        print('hello,', name)\n",
+    "        \n",
+    "\n",
+    "greet(\"rohit  kumar\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8fe2ca3f-e781-434c-9562-e7bc62c0c259",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def personal_info(**kwargs):\n",
+    "    for key in kwargs.items():\n",
+    "        print(\"age\" \",\" \"name\")\n",
+    "personal_info(name = \"rohit\", age = 23, location = \"bangalore\")\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c1d3f61a-189f-4e67-a1ad-866ab7d421b7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Q3-what is iterator in python? name the method used to initialise the itirator object and the method used for iteration.use these method to print the first five element of the given list[2,4,6,8,10,12,14,16,18,20].\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7321cdba-dda5-4ec2-a422-03c5f2142238",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list = [2,4,6,8,10,12,14,16,18,20]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ea9c556b-0002-444d-a9c3-3d6b7aea64fd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list[0:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e1244da9-13ea-4dd5-b45c-2ec8fa96517d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Q4- what is agenerator function in python? why yield keyword is used? give an example of agenerator function\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e64efbea-9cb7-416b-a4ad-7e359bb6897e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def fibonacci_genrator():\n",
+    "    a,b = 1,1\n",
+    "    while True:\n",
+    "        yield a\n",
+    "        a,b = b ,a+b\n",
+    "fib_gen = fibonacci_genrator()\n",
+    "for _ in range(8):\n",
+    "    fib_num = next(fib_gen)\n",
+    "    print(fib_num)\n",
+    "    \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c4ac7de6-5288-48aa-aad9-18768d95113e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Q5 - create agenerator fiunction for prime number less than 1000. use the next() method to print the first 20 prime numbers.\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "e90b4a39-ae72-4214-989c-3b1bc5c63088",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n",
+      "3\n",
+      "5\n",
+      "7\n",
+      "11\n",
+      "13\n",
+      "17\n",
+      "19\n",
+      "23\n",
+      "29\n",
+      "31\n",
+      "37\n",
+      "41\n",
+      "43\n",
+      "47\n",
+      "53\n",
+      "59\n",
+      "61\n",
+      "67\n",
+      "71\n"
+     ]
+    }
+   ],
+   "source": [
+    "def prime_genrator():\n",
+    "    primes = []\n",
+    "    number = 2\n",
+    "    \n",
+    "    while number < 1000:\n",
+    "        if all(number  % prime !=0 for prime in primes):\n",
+    "            primes.append(number)\n",
+    "            yield number\n",
+    "        number += 1\n",
+    "        \n",
+    "prime_gen = prime_genrator()\n",
+    "\n",
+    "for _ in range(20):\n",
+    "    prime_num = next(prime_gen)\n",
+    "    print(prime_num)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c8b2e0df-75b5-4da2-a5af-d0f1570cbdaa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"\"\"Q6 - write a python program to print the first 10 fibonacci number using a while loop.\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "a616c1ab-7d2a-453e-857f-f3718f22204e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "5\n",
+      "8\n",
+      "13\n",
+      "21\n",
+      "34\n",
+      "55\n"
+     ]
+    }
+   ],
+   "source": [
+    "def fibonacci_number():\n",
+    "    a,b = 1,1\n",
+    "    while True:\n",
+    "        yield a\n",
+    "        a,b = b ,a+b\n",
+    "fib_gen = fibonacci_number()\n",
+    "for _ in range(10):\n",
+    "    fib_num = next(fib_gen)\n",
+    "    print(fib_num)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "3f832677-a30d-4fa8-aaf1-aea051574368",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "\"Q7- write a list comprehenssion to iterate through the given string:'pwskills'.\\nexpected output:['p','w','s','k','i','l','l','s']\""
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"\"\"Q7- write a list comprehenssion to iterate through the given string:'pwskills'.\n",
+    "expected output:['p','w','s','k','i','l','l','s']\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "be80ac07-6c71-491c-b512-9d3878c822dd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['p', 'w', 's', 'k', 'i', 'l', 'l', 's']\n"
+     ]
+    }
+   ],
+   "source": [
+    "my_string = 'pwskills'\n",
+    "output = [char for char in my_string]\n",
+    "print(output)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "3b1dc8eb-3b5d-40d4-aa6d-cf03020cb622",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Q8 -  write a python program to check weather a given number is palindrome or not using a while loop.'"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"\"\"Q8 -  write a python program to check weather a given number is palindrome or not using a while loop.\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "8d06ec4b-436f-46cb-9d8b-095ba380ecb6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Q9- write a code to print odd number from 1 to 100 using list comprehenssion.'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"\"\"Q9- write a code to print odd number from 1 to 100 using list comprehenssion.\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "5f0d8546-ff1b-4d6a-83ae-c4738a441e35",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'odd_number' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[0;32mIn[8], line 7\u001b[0m\n\u001b[1;32m      5\u001b[0m             odd_number\u001b[38;5;241m.\u001b[39mappend(number)\n\u001b[1;32m      6\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m odd_number\n\u001b[0;32m----> 7\u001b[0m result \u001b[38;5;241m=\u001b[39m \u001b[43mget_odd_number\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[1;32m      8\u001b[0m \u001b[38;5;28mprint\u001b[39m(result)\n",
+      "Cell \u001b[0;32mIn[8], line 5\u001b[0m, in \u001b[0;36mget_odd_number\u001b[0;34m()\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[38;5;28;01mfor\u001b[39;00m number \u001b[38;5;129;01min\u001b[39;00m \u001b[38;5;28mrange\u001b[39m(\u001b[38;5;241m1\u001b[39m, \u001b[38;5;241m100\u001b[39m):\n\u001b[1;32m      4\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m number  \u001b[38;5;241m%\u001b[39m \u001b[38;5;241m2\u001b[39m  \u001b[38;5;241m!=\u001b[39m\u001b[38;5;241m0\u001b[39m:\n\u001b[0;32m----> 5\u001b[0m         \u001b[43modd_number\u001b[49m\u001b[38;5;241m.\u001b[39mappend(number)\n\u001b[1;32m      6\u001b[0m \u001b[38;5;28;01mreturn\u001b[39;00m odd_number\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'odd_number' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "def get_odd_number():\n",
+    "    odd_num = []\n",
+    "    for number in range(1, 100):\n",
+    "        if number  % 2  !=0:\n",
+    "            odd_number.append(number)\n",
+    "    return odd_number\n",
+    "result = get_odd_number()\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ad738949-1b0e-445f-b89e-7d8ce4eefc35",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
